@@ -1,0 +1,278 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+/**
+ * GENERAL F11Y
+ */
+ 
+ 
+ 
+/**
+ * Media query mixin.
+ *
+ * It's not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you'll want a
+ * change at 'mobile'. However, as inuit.css is required to take a hands off
+ * approach to design decisions, this is the closest we can get to baked-in
+ * responsiveness. It's flexible enough to allow you to set your own breakpoints
+ * but solid enough to be frameworkified.
+ *
+ * We define some broad breakpoints in our vars file that are picked up here
+ * for use in a simple media query mixin. Our options are:
+ *
+ * palm
+ * lap
+ * lap-and-up
+ * portable
+ * desk
+ * desk-wide
+ *
+ * Not using a media query will, naturally, serve styles to all devices.
+ *
+ * `@include media-query(palm){ [styles here] }`
+ *
+
+ */
+
+
+@mixin media-query($media-query){
+
+    @if $media-query == tablet{
+
+        @media only screen and (min-width:$tablet-start) { @content; }
+
+    }
+
+    @if $media-query == tablet-only{
+
+        @media only screen and (min-width:$tablet-start) and (max-width:$desk-start) { @content; }
+
+    }
+
+    @if $media-query == lap-and-up{
+
+        @media only screen and (min-width:$lap-start) { @content; }
+
+    }
+
+    @if $media-query == portable{
+
+        @media only screen and (max-width:$lap-end) { @content; }
+
+    }
+
+    @if $media-query == desk{
+
+        @media only screen and (min-width:$desk-start) { @content; }
+
+    }
+
+    @if $media-query == desk-wide{
+
+        @media only screen and (min-width: $desk-wide-start) { @content; }
+
+    }
+
+}
+
+
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ */
+@mixin font-size($font-size, $line-height:true){
+    font-size:$font-size;
+    font-size:($font-size / $base-font-size)*1rem;
+    @if $line-height == true{
+        line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    }
+}
+
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ *
+ */
+@mixin vendor($property, $value...){
+    -webkit-#{$property}:$value;
+       -moz-#{$property}:$value;
+        -ms-#{$property}:$value;
+         -o-#{$property}:$value;
+            #{$property}:$value;
+}
+
+
+
+
+
+/**
+ * STYLING
+ */
+
+/**
+ * Transition timing
+ */
+%transition{
+	@include vendor (transition, all, $timing);
+}
+
+/**
+ * Text-shadow settings
+ */
+@mixin text-shadow ($x: 1.5px, $y: 2px, $blur: 0px, $color: $dkblue){
+	text-shadow: $x $y $blur $color; 
+}
+
+/**
+ * White text
+ */
+@mixin reverse-text(){
+	color: $white;
+	@include text-shadow ($blur: 2px);	
+}
+
+/**
+ * General CTA style
+ */
+@mixin CTA($bg: $dkblue, $text: $white, $margin: .5rem auto 1rem, $padding: .3rem 0){
+	background-color: $bg;
+	border-radius: $round;
+	color: $text;
+	display: block;
+	margin: $margin;
+	padding: $padding;
+	text-align: center;
+	text-decoration: none;	
+}
+
+/**
+ * Rollover style
+ */
+@mixin rollover(){
+	background-color: $rollover-bg;
+	color: $rollover-text;
+	
+	@extend %transition;
+}
+
+/**
+ * Angled sides
+		 USAGE:
+		 .edge--bottom {
+		  @include angle(after);
+		}
+		
+		.edge--bottom--reverse {
+		  @include angle(after, true);
+		}
+ */
+@mixin angle($pseudo, $flip: false, $angle: 3deg, $bgcolor: inherit, $height: 100%, $z-in: -1) {
+  // Possible values for $pseudo are: before, after, both
+  @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+    position: relative;
+    $selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+    #{$selector} {
+      background: $bgcolor;
+      content: '';
+      display: block;
+      height: $height;
+      left: 0;
+      position: absolute;
+      right: 0;
+      -webkit-backface-visibility: hidden; // for Chrome Windows
+    }
+
+    @if $pseudo == 'before' {
+      #{$selector} {
+        top: 0;
+        z-index: $z-in;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'after' {
+      #{$selector} {
+        bottom: 0;
+        z-index: $z-in;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 100%;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+
+    @if $pseudo == 'both' {
+      &:before {
+        top: 0;
+        z-index: $z-in;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &:after {
+        bottom: 0;
+        z-index: $z-in;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin navangle(){
+	position: relative;
+	
+	&:after, &:before{
+		position: absolute;
+		background: $rollover-bg;
+		content: '';
+		display: block;
+		height: 100%;
+		top: 0;
+		transform-origin: bottom left;
+		width: 1rem;
+		-webkit-backface-visibility: hidden; // for Chrome Windows
+		z-index: -3;
+	}
+	
+	&:before{
+        left: -.5rem;
+        transform: skewX(10deg);
+	}
+	
+	&:after{
+		right: -.5rem;
+		transform: skewX(-10deg);
+	}
+}

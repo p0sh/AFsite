@@ -1,0 +1,114 @@
+/*------------------------------------*\
+    $ELEMENTS: HOME PAGE
+\*------------------------------------*/
+
+.home{
+	header h1{
+		letter-spacing: .05rem;
+		margin: 0;
+		padding-top: $burger-size;
+		text-align: center;
+		
+		@include media-query(tablet){
+			font-size: 3.5rem;
+			margin: 0 3rem;
+			text-align: left;
+		}
+		
+		@include media-query(desk){
+			position: relative;
+			
+			background-color: transparent;
+			font-size: 6rem;
+		    font-weight: normal;
+		    margin-bottom: -1rem;
+		    padding-bottom: 0; 
+		    width: 100%;
+		    
+		    @include text-shadow ($x: 5px, $y: 5px);
+		}
+	}
+}
+
+
+.headshot{
+	border: 5px solid $white;
+	border-radius: 50%;
+	margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    
+    width: 90%;
+	
+	@include media-query(tablet){
+		float: right;
+		margin-top: -1.5rem;
+		margin-left: 1.5rem;
+		width: 40%;
+	}
+	
+	@include media-query(lap-and-up){
+		margin-top: -4.5rem;
+	}
+	
+	@include media-query(desk){
+		margin-top: -12rem;
+		width: 30%;	
+	}
+	
+	img{
+		border: none;
+		display: block;
+	    margin: 0 auto;
+	}
+}
+
+
+/**
+ * appearances
+ */
+.appearance{
+	
+	justify-content: center;
+	
+	h1{
+		color: $blue;
+		font-size: $milli-size;
+		margin: 0;
+		text-transform: uppercase;
+	}
+	
+	h2{
+		color: $blue;
+		margin-bottom: .5rem;
+	}	
+	
+	p{
+		@include media-query(tablet-only){
+			width: 80%;
+		}
+	}
+	
+	.details{
+		background-color: $ltblue;
+		padding: 1rem;
+		
+		@include media-query(tablet-only){
+			width: 50%;
+		}
+		
+		p{
+			margin: 0 auto;
+			margin-bottom: .3rem;
+		}
+	}
+	
+	@include media-query(tablet-only){
+		img {
+			float: right;
+			margin: 1rem;
+			width: 40%;
+		}
+	}
+
+}

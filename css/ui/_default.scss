@@ -1,0 +1,235 @@
+/*------------------------------------*\
+    $DEFAULT
+\*------------------------------------*/
+/** 
+ * jA for ameliafowler.com
+ 
+ * Default element styles
+ */
+ 
+
+/**
+ * all the single DOM elements, put your styles up
+ */
+body{	
+	background-color: $white;
+	color: $black;
+}
+
+header{
+	background-color: $blue;
+	position: relative;
+	
+	@include reverse-text();
+	
+
+	h1{
+		letter-spacing: .05rem;
+		margin: 0;
+		padding-top: $burger-size;
+		text-align: center;
+		
+		@include media-query(tablet){
+			font-size: 3.5rem;
+			margin: 0 3rem;
+		}
+		
+		@include media-query(desk){
+		    background-color: $dkblue;
+			font-size: 1.5rem;
+		    font-weight: normal;
+		    padding-top: .5rem;
+		    padding-bottom: .5rem;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    text-align: center;
+		    width: 6rem;
+		    z-index: 4;
+		}
+	}
+
+}
+
+a{
+	color: $link;
+	
+	&:hover{
+		background-color: $rollover-bg;
+		border-radius: $round;
+		color: $rollover-text;
+		padding: .3rem 0;
+		text-decoration: none;
+		}
+}
+
+
+
+/**
+ * classes and such
+ */ 
+ 
+/* containers */
+.content{
+	flex: 1;
+	flex-wrap: wrap;
+	margin: 1.5rem 2rem;
+	
+	@include media-query(desk){
+		display: flex;
+		justify-content: center;
+		margin-top: 3.5rem;
+	}
+}
+
+.chunk{	
+	flex-basis: 0;
+	margin: .5rem 1.5rem 3rem;
+
+	@include media-query(desk){
+		flex-basis: 25%;
+		flex-grow: 1;
+	}	
+
+	@include media-query(tablet){
+		flex-basis: 50%;
+		flex-grow: 1;
+	}	
+		
+	p{
+		font-size: $milli-size;
+	}
+		
+	img{
+		margin: .5em 0;
+		
+	}
+	
+	.detail-data{
+		font-weight: bold;
+	}	
+}
+
+.CTA{
+	@include CTA;
+
+	&:hover{
+		@include rollover;
+	}
+
+}
+
+
+
+.measure{
+	max-width: 50rem;
+}
+
+
+/* top of page */
+ 
+.page_intro{
+	background-color: $blue;
+	color: $white;
+	line-height: 1.7rem;
+	padding: 1rem;
+	position: relative;
+	
+	@include reverse-text();
+	@include angle(after, true);
+	&:after{
+		@include media-query(tablet){
+			height: 250%;
+		}
+	}	
+	
+	p {
+		margin: 0 2rem;
+		text-align: left;
+	}
+	
+	.CTA{
+		@include media-query(tablet){
+		    margin: 1rem 2rem;
+			width: 50%;
+		}
+		
+		@include media-query(desk){
+			width: 30%;
+		}
+	}
+
+}
+
+.angle2{
+	@include angle(after, $bgcolor:lighten($ltblue, 15%));
+	&:after{
+		z-index: -2;
+		
+		@include media-query(tablet){
+			height: 200%;
+		}
+	}
+}
+
+
+
+/* bottom of page */
+
+
+footer{
+	 background-color: $blue;
+	 min-height: 200px;
+	 padding-top: 1.5rem;
+	 
+	 position: fixed;
+	 bottom: 0;
+	 
+	 @include angle(before, true);
+	 &:before{
+		 @include media-query(desk){
+			height: 100%;
+		}
+	 }
+	 
+	 .CTA{
+		 width: 50%;
+		 
+		 @include media-query(desk){
+			 width: 30%;
+		 }
+	 }
+ }
+
+.footerangle2{
+	@include angle(before, $bgcolor:lighten($ltblue, 15%));
+	&:before{
+		z-index: -2;
+		
+		@include media-query(desk){
+			height: 100%;
+		}
+	}
+}
+
+#contact #footer-contact{
+	display: none;
+}
+
+.socialmedia{
+	text-align: center;
+	
+	& a{
+		margin: .5rem;
+		
+		&:hover{
+			background-color: inherit;
+		}
+	}
+	
+	.icon {
+		&:hover{
+			color: $rollover-bg;
+		}
+	}
+}

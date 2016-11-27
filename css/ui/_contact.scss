@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    $ELEMENTS: CONTACT PAGE
+\*------------------------------------*/
+
+.contact-form{
+	margin: 2.5rem auto;
+	max-width: 500px;
+	width: 90%;
+	
+	@include media-query(tablet){
+		margin-bottom: 5rem;
+	}
+	
+	@include media-query(desk){
+		display: block;
+	    margin-bottom: 6rem;
+	    margin-top: 4rem;
+	}	
+	
+	h1{
+		color: $dkblue;
+	}
+}
+
+input[type=submit]{
+	@extend .CTA;
+	
+	border: none;
+	width: 200px;
+}

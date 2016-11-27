@@ -1,0 +1,46 @@
+/*------------------------------------*\
+    $FONTS
+\*------------------------------------*/
+ 
+
+/**
+ * Sets font paths
+ */
+@mixin font-face($fontFamily, $path, $fontFilename) {
+  font-family: $fontFamily;
+  src: url('#{$path}#{$fontFilename}.eot');
+  src: url('#{$path}#{$fontFilename}.eot?#iefix') format('embedded-opentype'),
+       url('#{$path}#{$fontFilename}.woff') format('woff'),
+       url('#{$path}#{$fontFilename}.ttf') format('truetype'),
+       url('#{$path}#{$fontFilename}.svg') format('svg');
+}
+
+
+
+
+/*------------------------------------*\
+    TYPE
+\*------------------------------------*/
+
+/**
+ * AF typefaces are:
+ * Aleo (display + body)
+ */
+
+@font-face {
+  @include font-face('Aleo', $fontPath, 'Aleo-Regular-webfont');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  @include font-face('Aleo', $fontPath, 'Aleo-Bold-webfont');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  @include font-face('Aleo', $fontPath, 'Aleo-Italic-webfont');
+  font-weight: normal;
+  font-style: italic;
+}

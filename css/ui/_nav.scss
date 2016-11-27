@@ -1,0 +1,120 @@
+/*------------------------------------*\
+    $NAV
+\*------------------------------------*/
+
+nav{
+	background-color:  $dkblue;
+	font-size: 1.5rem;
+	letter-spacing: .05rem;
+	position: fixed;
+	opacity: 0;
+	text-align: center;
+	text-transform: uppercase;
+	top: $burger-size;
+	width: 100%;
+	z-index: 2001;
+	
+	@extend %transition;
+	
+	&.open{
+		opacity: 1;
+		
+	}
+	
+	@include media-query(lap-and-up) {
+		opacity: 1;
+		
+		background-color: inherit;
+		font-size: 1.2rem;
+		padding: 1rem;
+		position: relative;
+		text-align: left;
+		top: .5rem;
+		z-index: 0;
+	}
+	
+	ul{
+	    list-style:none;
+	    margin-bottom: 0;
+	    margin-left:0;
+	    @extend .cf;
+		
+		> li{
+			padding: .5rem 0;
+			
+			&:hover,
+			&.current{
+				@include rollover;
+				@include navangle();
+			}
+			
+			@include media-query(lap-and-up){
+				display: inline;
+				margin: 0 1.5rem;
+				padding: .5rem;
+			}
+			
+			&,
+			> a{
+				color: $white;
+				text-decoration: none;
+				width: 100%;
+	            display:inline-block;
+	           *display:inline;
+	            zoom:1;
+	            
+	            &:hover, 
+				.current{
+					color: inherit;
+					text-shadow: none;
+				}
+	            
+	            @include media-query(lap-and-up){
+					display: inline;
+				}
+				
+			}
+		}
+	}
+}
+
+.nav__menu-opener{
+	position: absolute;
+    right: 0;
+    padding: .5rem .5rem 0;
+    
+    &.open {
+	    background-color: $dkblue;
+	    @extend %transition;
+    }
+    
+    @include media-query(lap-and-up){
+	    display: none;
+    }
+}
+
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+	
+	color: $white;
+	font-size: $burger-size;
+}
+
+/* =======================================================================================
+Example showing how to change the color/size of the icons:
+.icon-name {
+	font-size: 32px; // works because "width" & "height" were set using em units
+	color: red; // works for single-colored icons, because "fill" was set to "currentColor"
+}
+======================================================================================== */
+
+.icon-menu{
+
+}
+
+.icon-cross{
+	font-size: 1.5rem;
+}

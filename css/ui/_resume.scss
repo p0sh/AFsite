@@ -1,0 +1,29 @@
+/*------------------------------------*\
+    $ELEMENTS: RESUME PAGE
+\*------------------------------------*/
+
+.resume{
+	
+	margin-bottom: 3rem;
+	
+// overwrite styling from Resume Builder plugin
+	
+	.rb-resume-block .rb-about .rb-about-text .rb-description{
+		padding: 0;
+	}
+	
+	.rb-resume-block .rb-about:after{
+		margin: 0;
+	}
+	
+	.rb-resume-block .rb-experience .rb-section-title{
+	    border-top: none;
+	    color: #0185B0;
+	    font-size: 14px;
+	    font-weight: normal;
+	    margin: 0 0 .8rem 0;
+	    padding: 0;
+	    text-transform: uppercase;
+	}
+	
+}

@@ -1,0 +1,86 @@
+/* 
+	
+	Theme Name: AF custom
+	Description: theme designed custom for Amelia Fowler
+	Author: j.Anderson
+	Author URI: http://memorabilist.com
+	Tags:custom
+	Version: 1.0
+			
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+	
+*/
+
+@charset "UTF-8";
+
+
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ * credit to inuitcss.com -- @inuitcss -- @csswizardry
+ * much of the base Sass for this project is lifted liberally
+ * from Harry Roberts' InuitCSS, 2013 version. Respect.
+ *
+ * sass --watch style.scss:style.min.css --style compressed
+ *
+ */
+
+
+/**
+ * Variables
+ */
+@import "vars";
+
+
+
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+/**
+ * General settings for the entire site.
+ */
+@import "base/resetnormalize";
+@import "base/base";
+ 
+
+/*------------------------------------*\
+    $TOOLS
+\*------------------------------------*/
+/**
+ * These are custom mixins and functions.
+ */
+@import "tools/mixins";
+@import "tools/helpers";
+
+
+
+/*------------------------------------*\
+    $TYPE
+\*------------------------------------*/
+/**
+ * General typography settings.
+ */
+ @import "type/fonts";
+ @import "type/headings";
+ 
+
+/*------------------------------------*\
+    $UI
+\*------------------------------------*/
+/**
+ * Fully styled chunks of the UI.
+ */
+@import "ui/default";
+
+@import "ui/images";
+@import "ui/lists";
+@import "ui/forms";
+
+@import "ui/nav";
+
+@import "ui/home";
+@import "ui/resume";
+@import "ui/galleryfootage";
+@import "ui/contact";
