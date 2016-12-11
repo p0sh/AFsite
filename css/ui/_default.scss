@@ -89,12 +89,7 @@ a{
 	@include media-query(desk){
 		flex-basis: 25%;
 		flex-grow: 1;
-	}	
-
-	@include media-query(tablet){
-		flex-basis: 50%;
-		flex-grow: 1;
-	}	
+	}		
 		
 	p{
 		font-size: $milli-size;
