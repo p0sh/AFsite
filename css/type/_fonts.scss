@@ -8,11 +8,11 @@
  */
 @mixin font-face($fontFamily, $path, $fontFilename) {
   font-family: $fontFamily;
-  src: url('#{$path}#{$fontFilename}.eot');
-  src: url('#{$path}#{$fontFilename}.eot?#iefix') format('embedded-opentype'),
-       url('#{$path}#{$fontFilename}.woff') format('woff'),
-       url('#{$path}#{$fontFilename}.ttf') format('truetype'),
-       url('#{$path}#{$fontFilename}.svg') format('svg');
+  src: url('.#{$path}#{$fontFilename}.eot');
+  src: url('.#{$path}#{$fontFilename}.eot?#iefix') format('embedded-opentype'),
+       url('.#{$path}#{$fontFilename}.woff') format('woff'),
+       url('.#{$path}#{$fontFilename}.ttf') format('truetype'),
+       url('.#{$path}#{$fontFilename}.svg') format('svg');
 }
 
 

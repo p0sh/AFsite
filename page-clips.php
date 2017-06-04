@@ -10,6 +10,8 @@
 
 
 
+<!--
+
 	<?php
 	if (have_posts()) :
 	   while (have_posts()) :
@@ -18,9 +20,45 @@
 	   endwhile;
 	endif;
 	?>
+-->
 
 
+		<?php
+		// check if the repeater field has rows of data
+		if( have_rows('clips_gallery') ): ?>
+		
+		 	
+		   <?php 
+			   // loop through the rows of data and then display a sub field value
+			   while ( have_rows('clips_gallery') ) : the_row(); ?>
 
+<!--
+				<div class="chunk piece-of-media">
+					<iframe src="<?php the_sub_field('clip', false, false); ?>"></iframe>
+					<p><?php the_sub_field('caption'); ?></p>
+				</div>
+-->
+				
+				<div class="chunk piece-of-media">
+					<video width="320" height="240" controls>
+					    <source src="<?php the_sub_field('clip', false, false); ?>">
+					</video>
+					<p><?php the_sub_field('caption'); ?></p>
+				</div>
+				
+			<?php endwhile; ?>
+		    
+		
+		<?php else :
+		
+		    // no rows found
+		
+		endif;
+		
+		?>
+
+
+<!--
 
 		<?php
 		// check if the repeater field has rows of data
@@ -33,11 +71,11 @@
 
 		     
 				<div class="chunk piece-of-media">
-<!-- 					<?php the_sub_field('clip'); ?> -->
+					<?php the_sub_field('clip'); ?>
 					
 					
 					
-<!--
+
 <?php
 
 // get iframe HTML
@@ -71,7 +109,7 @@ $iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
 echo $iframe;
 
 ?>	
--->				
+				
 					
 					
 					
@@ -88,6 +126,8 @@ echo $iframe;
 		endif;
 		
 		?>
+-->
+
 
 
 	</section>
